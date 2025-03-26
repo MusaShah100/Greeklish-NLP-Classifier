@@ -32,11 +32,11 @@ This system provides a complete pipeline for:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd greeklish-english-classifier
+git clone https://github.com/MusaShah100/Greeklish-NLP-Classifier.git
+cd Greeklish-NLP-Classifier
 ```
 
-2. Create a virtual environment:
+2. Create and activate a virtual environment:
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -51,17 +51,17 @@ pip install -r requirements.txt
 
 ### Quick Start
 
-Run the complete pipeline:
+1. Run the complete pipeline:
 ```bash
 python run_pipeline.py
 ```
 
-Test the classifier:
+2. Test the classifier:
 ```bash
 python test_examples.py
 ```
 
-### Making Predictions
+### Using the Classifier
 
 ```python
 from simple_inference import TextClassifier
@@ -69,7 +69,7 @@ from simple_inference import TextClassifier
 classifier = TextClassifier()
 result = classifier.predict("Your text here")
 print(f"Prediction: {result['prediction']}")
-print(f"Confidence: {result['probability']:.2%}")
+print(f"Confidence: {result['probability']:.4f}")
 ```
 
 ## Project Structure
@@ -77,20 +77,16 @@ print(f"Confidence: {result['probability']:.2%}")
 ```
 .
 ├── data/                  # Data directory
-│   ├── scraped_texts.csv  # Raw scraped data
-│   └── processed_texts.csv # Preprocessed data
+│   ├── raw/              # Raw scraped data
+│   └── processed/        # Processed training data
 ├── models/               # Trained models
-├── evaluation/          # Results and visualizations
-├── text_scraper.py      # Data collection
-├── preprocess.py        # Text preprocessing
-├── text_classifier.py   # Model implementation
-├── evaluate_classifier.py # Evaluation
-├── run_pipeline.py      # Main pipeline
-├── simple_inference.py  # Inference interface
-├── test_examples.py     # Testing script
-├── analyze_data.py      # Data analysis
-├── requirements.txt     # Dependencies
-└── documentation.md    # Technical docs
+├── evaluation/           # Evaluation results
+├── text_scraper.py       # Data collection
+├── preprocess.py         # Text preprocessing
+├── text_classifier.py    # Model training
+├── simple_inference.py   # Inference interface
+├── evaluate_classifier.py # Model evaluation
+└── run_pipeline.py       # Main pipeline
 ```
 
 ## Performance
@@ -119,7 +115,27 @@ MIT License
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request 
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## Commit Message Convention
+
+This project follows conventional commit messages for better version control and changelog generation:
+
+- `feat:` New features
+- `fix:` Bug fixes
+- `docs:` Documentation changes
+- `style:` Code style changes
+- `refactor:` Code refactoring
+- `test:` Adding or modifying tests
+- `chore:` Maintenance tasks
+
+Example:
+```
+feat: Add automated data collection
+
+- Implement web scraping for Greeklish sources
+- Add data validation pipeline
+- Include duplicate detection 
